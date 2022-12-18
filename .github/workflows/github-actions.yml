@@ -53,12 +53,12 @@ jobs:
       - run: echo "The status of the job is as follows ${{ job.status }}."
 
  rainforest:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     name: Run Rainforest
     steps:
       - name: Rainforest
         uses: rainforestapp/github-action@master
         with:
           token: 0c519f0276e5fe336437261d9bc63314
-          run_group_id: First   
+          run_group_id: 13177   
 
