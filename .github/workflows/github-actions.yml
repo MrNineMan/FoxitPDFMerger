@@ -36,6 +36,8 @@ jobs:
           ls ${{ github.workspace }}
       - name: Display dotnet version
         run: dotnet --version
+      - name: Install Nuget Dependancies
+        run: nuget restore
       - name: Install Dependencies
         run: dotnet restore
       - name: Build
