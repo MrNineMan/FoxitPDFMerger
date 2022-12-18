@@ -2,27 +2,30 @@ name: PDFMerger Build and Deployment
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
 jobs:
-build:
-  Explore-GitHub-Actions:
+ build:
+  
     runs-on: ubuntu-latest
     strategy:
-   	matrix:
-	#specifies and runs the build using multiple Dot-Net Versions
-	dotnet-version: [ ‘3.0’, ‘3.1.x’, ‘5.0.x’ ]	
+      matrix:
+        dotnet-version: [ '3.0', '3.1.x', '5.0.x' ]
+
     steps:
+      
       - uses: actions/checkout@v3
       - name: Setup dotnet ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      #prints out your current .net version
-- uses: actions/cache@v3
-  with:
-    path: ~/.nuget/packages
+      # You can test your matrix by printing the current dotnet version
+      - name: Display dotnet version
+        run: dotnet --version
+      - uses: actions/cache@v3
+        with:
+         path: ~/.nuget/packages
     # Look to see if there is a cache hit for the corresponding requirements file
-    key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-    restore-keys: |
-      ${{ runner.os }}-nuget
+         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+         restore-keys: |
+          ${{ runner.os }}-nuget
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -35,10 +38,10 @@ build:
           ls ${{ github.workspace }}
       - name: Display dotnet version
         run: dotnet –version
-      -name: Install Dependencies
+      - name: Install Dependencies
         run: dotnet restore
-      -name: Build
-      Run: dotnet build
-      -name: Test with the dotnet CLI
-      run: dotnet test		 	
+      - name: Build
+        run: dotnet build
+      - name: Test with the dotnet CLI
+        run: dotnet test		 	
       - run: echo "The status of the job is as follows ${{ job.status }}."  
