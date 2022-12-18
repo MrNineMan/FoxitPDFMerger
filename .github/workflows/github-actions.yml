@@ -48,6 +48,7 @@ jobs:
           black_auto_fix: true
           flake8: true
           flake8_auto_fix: false
+          
       - name: Build
         run: dotnet build
       - name: Test with the dotnet CLI
