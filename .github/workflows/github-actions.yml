@@ -40,6 +40,8 @@ jobs:
         run: nuget restore
       - name: Install Dependencies
         run: dotnet restore
+      - name: Format Code
+        run: dotnet run
       - name: Build
         run: dotnet build
       - name: Test with the dotnet CLI
