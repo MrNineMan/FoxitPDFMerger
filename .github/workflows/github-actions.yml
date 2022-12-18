@@ -2,10 +2,11 @@ name: PDFMerger Build and Deployment
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
 jobs:
+build:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     strategy:
-   matrix:
+   	matrix:
 	#specifies and runs the build using multiple Dot-Net Versions
 	dotnet-version: [ ‘3.0’, ‘3.1.x’, ‘5.0.x’ ]	
     steps:
