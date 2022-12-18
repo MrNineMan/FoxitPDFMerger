@@ -40,8 +40,14 @@ jobs:
         run: nuget restore
       - name: Install Dependencies
         run: dotnet restore
-      - name: Format Code
-        run: dotnet run
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          auto_fix: true
+          black: true
+          black_auto_fix: true
+          flake8: true
+          flake8_auto_fix: false
       - name: Build
         run: dotnet build
       - name: Test with the dotnet CLI
