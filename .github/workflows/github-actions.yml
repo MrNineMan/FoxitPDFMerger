@@ -3,7 +3,7 @@ run-name: ${{ github.actor }}’s Build and Test
 on: [push]
 
 env:
-  DOTNET_VERSION: '4.0.x'
+  DOTNET_VERSION: '4.8'
   
 jobs:
  build-and-test:
