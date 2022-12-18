@@ -1,10 +1,14 @@
 name: PDFMerger Build and Deployment
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
-jobs:
- build:
+
+env:
+  DOTNET_VERSION: '4.0.x'
   
-    runs-on: ubuntu-latest
+jobs:
+ build-and-test:
+
+    runs-on: windows-latest
     
     steps:
       
@@ -12,7 +16,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '4.0.x'      
+          dotnet-version: ${{ env.DOTNET_VERSION }}      
       - uses: actions/cache@v3
         with:
          path: ~/.nuget/packages
