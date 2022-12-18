@@ -1,0 +1,43 @@
+name: PDFMerger Build and Deployment
+run-name: ${{ github.actor }}’s Build and Test
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    strategy:
+   matrix:
+	#specifies and runs the build using multiple Dot-Net Versions
+	dotnet-version [ ‘3.0’, ‘3.1.x’, ‘5.0.x’ ]	
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup dotnet ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      #prints out your current .net version
+- uses: actions/cache@v3
+  with:
+    path: ~/.nuget/packages
+    # Look to see if there is a cache hit for the corresponding requirements file
+    key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-nuget
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Display dotnet version
+        run: dotnet –version
+      -name: Install Dependencies
+        run: dotnet restore
+      -name: Build
+      Run: dotnet build
+      -name: Test with the dotnet CLI
+      run: dotnet test		 	
+      - run: echo "The status of the job is as follows ${{ job.status }}."  
