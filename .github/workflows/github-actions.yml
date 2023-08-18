@@ -1,4 +1,5 @@
-name: PDFMerger Build and Deployment
+concurrency: ci-${{ github.actor }}
+name: Master Branch Workflow File 
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
 
