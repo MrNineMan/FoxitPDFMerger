@@ -1,5 +1,5 @@
 concurrency: ci-${{ github.actor }}
-name: PDFMerger Build and Deployment
+name: Forked Branch Workflow File
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
 
