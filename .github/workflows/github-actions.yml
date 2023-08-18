@@ -1,3 +1,4 @@
+concurrency: ci-${{ github.actor }}
 name: PDFMerger Build and Deployment
 run-name: ${{ github.actor }}’s Build and Test
 on: [push]
@@ -9,7 +10,7 @@ jobs:
  build-and-test:
 
     runs-on: self-hosted
-    
+      
     steps:
       
       - uses: actions/checkout@v3
