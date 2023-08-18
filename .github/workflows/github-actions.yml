@@ -56,6 +56,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - run: echo "This is a second job"  
+    - name: Announce
+      run: echo "This is a second job"  
 
 
