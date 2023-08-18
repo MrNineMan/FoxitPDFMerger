@@ -9,7 +9,7 @@ env:
 jobs:
  build-and-test:
 
-    runs-on: self-hosted
+    runs-on: windows-latest
       
     steps:
       
