@@ -50,4 +50,12 @@ jobs:
         run: dotnet build
       - name: Test with the dotnet CLI
         run: dotnet test		 	
-      - run: echo "The status of the job is as follows ${{ job.status }}."
+      - run: echo "The status of the job is as follows ${{ job.status }
+      
+ concurrency-group-test:
+    runs-on: windows-latest
+
+    steps:
+    - run: echo "This is a second job"  
+
+
